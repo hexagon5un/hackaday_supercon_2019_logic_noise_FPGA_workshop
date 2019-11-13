@@ -5,6 +5,7 @@ always @(posedge clk) begin
 	counter <= counter + 1;
 end
 
-assign pwmout = counter[20];
+assign pwmout = counter[16];
+// Try other bits.
 
 endmodule
