@@ -32,3 +32,5 @@ assign led[5:0] = ~btn[5:0];
 endmodule
 
 // Build more!  What if you have to define 100 of these?
+// What about other ways of mixing the oscs together? &? ^? 
+
