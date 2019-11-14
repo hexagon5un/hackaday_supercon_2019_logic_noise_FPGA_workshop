@@ -26,7 +26,15 @@ single_pitch_oscillator #(
 	.out(out_e)
 );
 
-assign pwmout = (out_c & ~btn[4]) | (out_d & ~btn[5]) | (out_c & ~btn[3]);
+wire voice_c;
+assign voice_c = out_c & ~btn[4];
+wire voice_d;
+assign voice_d = out_d & ~btn[5];
+wire voice_e;
+assign voice_e = out_e & ~btn[3];
+
+assign pwmout = voice_c | voice_d | voice_e;
+
 assign led[5:0] = ~btn[5:0];
 
 endmodule
