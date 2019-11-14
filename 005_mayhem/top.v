@@ -64,8 +64,22 @@ always @(posedge clk) begin
 	counter <= counter + 1;
 end
 
+wire voice_0;
+assign voice_0 = outs[0] & counter[19] ;
 
-assign pwmout = outs[0] & counter[19] | outs[2] & counter[23] | outs[4] & ~counter[23] ^ outs[22] & ~btn[5];
+wire blue_moon;
+assign blue_moon = counter[19] & counter[18] & counter[17];
+wire voice_1;
+assign voice_1 = outs[2] & blue_moon ;
+
+wire voice_2;
+assign voice_2 = outs[4] & ~counter[23] ;
+
+wire voice_3;
+assign voice_3 = outs[6] & ~btn[5];
+
+
+assign pwmout = voice_0 | voice_1 | voice_2 | voice_3;
 assign led[5:0] = ~btn[5:0];
 
 endmodule
