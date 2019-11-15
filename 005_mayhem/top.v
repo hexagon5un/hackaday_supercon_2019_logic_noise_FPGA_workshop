@@ -68,7 +68,7 @@ wire voice_0;
 assign voice_0 = outs[0] & counter[19] ;
 
 wire blue_moon;
-assign blue_moon = counter[19] & counter[18] & counter[17];
+assign blue_moon = counter[19] & counter[21] & counter[22];
 wire voice_1;
 assign voice_1 = outs[2] & blue_moon ;
 

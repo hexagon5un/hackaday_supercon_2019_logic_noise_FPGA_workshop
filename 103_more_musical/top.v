@@ -22,19 +22,19 @@ assign led = shift_register;
 
 // Now it gets musical?
 
-wire [17:0] tuning_increment;
+wire [17:0] counter_top;
 pitches pitch_lookup (
 	.clk(clk),
 	.rst(0),
-	.pitch(scale_degree),
-	.tuning_increment(tuning_increment)
+	.scale_degree(scale_degree),
+	.counter_top(counter_top)
 );
 
 wire osc_out;
 oscillator myosc ( 
 	.clk(clk),
 	.rst(0),
-	.tuning_increment(tuning_increment),
+	.counter_top(counter_top),
 	.out(osc_out)
 );
 

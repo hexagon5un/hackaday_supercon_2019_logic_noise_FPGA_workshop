@@ -26,30 +26,31 @@ wire [WIDTH-1:0] pitchloop;
 loop_register #( .WIDTH(WIDTH) ) pitchlooper (
 	.clk(counter[19]),
 	.rst(1'b0),
-	.set(~btn[0]),
-	.clear(~btn[2]),
+	.set(~btn[2]),
+	.clear(~btn[1]),
 	.register_out(pitchloop)
 );
 
 wire [3:0] scale_degree;
 assign scale_degree = {pitchloop[2], pitchloop[4], pitchloop[5], pitchloop[9]};
 
-wire [17:0] tuning_increment;
+wire [17:0] counter_top;
 pitches pitch_lookup (
 	.clk(clk),
 	.rst(0),
-	.pitch(scale_degree),
-	.tuning_increment(tuning_increment)
+	.scale_degree(scale_degree),
+	.counter_top(counter_top)
 );
 
 wire osc_out;
 oscillator myosc ( 
 	.clk(clk),
 	.rst(0),
-	.tuning_increment(tuning_increment),
+	.counter_top(counter_top),
 	.out(osc_out)
 );
 
+// Extra counter makes it do short (half-period) pulses
 assign pwmout = osc_out & gate & ~counter[19];
 
 endmodule

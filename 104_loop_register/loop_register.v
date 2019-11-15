@@ -13,7 +13,7 @@ module loop_register #(
 reg [WIDTH-1:0] internal_register;
 always @(posedge clk) begin
 	if (rst) begin
-		internal_register <= {WIDTH-1 1'b0, 1};
+		internal_register <= {{WIDTH-1{1'b0}}, 1};
 	end
 	else begin
 		case ({set, clear})

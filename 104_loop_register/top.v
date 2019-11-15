@@ -26,7 +26,7 @@ wire osc_out;
 oscillator myosc ( 
 	.clk(clk),
 	.rst(0),
-	.tuning_increment(18'd3822),
+	.counter_top(18'd3822),
 	.out(osc_out)
 );
 

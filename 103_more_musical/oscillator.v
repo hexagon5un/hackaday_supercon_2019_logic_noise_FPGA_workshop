@@ -3,7 +3,7 @@ module oscillator #(
 )(
 	input clk,
 	input rst,
-	input [WIDTH-1:0] tuning_increment,
+	input [WIDTH-1:0] counter_top,
 	output out
 );
 
@@ -17,7 +17,7 @@ always @(posedge clk) begin
 		counterout <= 0;
 	end else
 	begin
-		if (counter < tuning_increment)
+		if (counter < counter_top)
 		begin
 			counter <= counter + 1;
 		end else 

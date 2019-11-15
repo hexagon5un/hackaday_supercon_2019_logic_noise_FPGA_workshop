@@ -31,7 +31,7 @@ assign voice_c = out_c & ~btn[4];
 wire voice_d;
 assign voice_d = out_d & ~btn[5];
 wire voice_e;
-assign voice_e = out_e & ~btn[3];
+assign voice_e = out_e & ~btn[7];
 
 assign pwmout = voice_c | voice_d | voice_e;
 
