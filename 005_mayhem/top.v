@@ -1,6 +1,6 @@
 `include "single_pitch_oscillator.v"
 
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 
 wire [7:0] outs;
 single_pitch_oscillator #(
@@ -80,7 +80,7 @@ assign voice_3 = outs[6] & ~btn[5];
 
 
 assign pwmout = voice_0 | voice_1 | voice_2 | voice_3;
-assign led[5:0] = ~btn[5:0];
+assign ledc[5:0] = ~btn[5:0];
 
 endmodule
 

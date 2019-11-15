@@ -1,7 +1,7 @@
 `include "oscillator.v"
 `include "pitches.v"
 
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 
 reg [23:0] counter;
 always @(posedge clk) begin
@@ -18,7 +18,7 @@ always @(posedge counter[19]) begin
 	gate <= scale_degree ? 1 : 0;
 end
 
-assign led = shift_register;
+assign ledc = shift_register;
 
 // Now it gets musical?
 
