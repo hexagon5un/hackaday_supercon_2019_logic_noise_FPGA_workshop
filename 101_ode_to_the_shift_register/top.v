@@ -1,6 +1,6 @@
 `include "single_pitch_oscillator.v"
 
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 
 reg [23:0] counter;
 always @(posedge clk) begin
@@ -12,7 +12,7 @@ always @(posedge counter[19]) begin
 	shift_register <= { ~btn[4], shift_register[5:1]};
 end
 
-assign led=shift_register;
+assign ledc=shift_register;
 
 // But this class isn't about blinking lights
 
