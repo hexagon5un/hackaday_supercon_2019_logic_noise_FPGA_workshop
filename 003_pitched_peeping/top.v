@@ -1,4 +1,4 @@
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 
 reg [23:0] counter; // 24-bit counter
 reg counterout = 0;
@@ -18,7 +18,7 @@ always @(posedge clk) begin
 end
 
 assign pwmout = counterout & ~btn[4];
-assign led[0] = ~btn[4];
+assign ledc[0] = ~btn[4];
 
 endmodule
 

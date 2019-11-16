@@ -2,7 +2,7 @@
 `include "loop_register.v"
 `include "pitches.v"
 
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 localparam WIDTH = 16;
 
 reg [23:0] counter;
@@ -20,7 +20,7 @@ loop_register #( .WIDTH(WIDTH) ) gatelooper (
 	.register_out(gateloop)
 );
 assign gate = gateloop[14];
-assign led = gateloop[WIDTH-1 -: 6]; 
+assign ledc = gateloop[WIDTH-1 -: 6];
 
 wire [WIDTH-1:0] pitchloop;
 loop_register #( .WIDTH(WIDTH) ) pitchlooper (

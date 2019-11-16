@@ -1,7 +1,7 @@
 `include "oscillator.v"
 `include "loop_register.v"
 
-module top(input clk, input [7:0] btn, output [5:0] led, output pwmout);
+module top(input clk, input [7:0] btn, output [5:0] ledc, output pwmout);
 localparam WIDTH = 16;
 
 reg [23:0] counter;
@@ -20,7 +20,7 @@ loop_register #( .WIDTH(WIDTH) ) myloop (
 );
 
 assign gate = shiftreg[14];
-assign led = shiftreg[WIDTH-1 -: 6]; 
+assign ledc = shiftreg[WIDTH-1 -: 6];
 
 wire osc_out;
 oscillator myosc ( 
