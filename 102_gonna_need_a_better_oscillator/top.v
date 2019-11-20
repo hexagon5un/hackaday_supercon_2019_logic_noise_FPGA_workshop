@@ -20,7 +20,7 @@ wire osc_out;
 oscillator myosc ( 
 	.clk(clk),
 	.rst(0),
-	.counter_top({2'b0, shift_register, 9'h0}), // just playin!
+	.counter_top({3'b0, shift_register, 9'h0}), // just playin!
 	.out(osc_out)
 );
 
